@@ -1,6 +1,9 @@
 {
-  "type": "sqlite",
-  "database": "database.sqlite",
-  "synchronize": true,
-  "logging": false
+  "type": "postgres",
+  "host": "localhost",
+  "port": 1203,
+  "username": "test",
+  "password": "test",
+  "database": "test",
+  "synchronize": true
 }

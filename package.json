@@ -20,8 +20,9 @@
     "vesper-typescript-example"
   ],
   "dependencies": {
-    "vesper": "^0.1.0",
-    "sqlite3": "^4.0.0"
+    "pg": "^7.4.1",
+    "sqlite3": "^4.0.0",
+    "vesper": "^0.1.0"
   },
   "scripts": {
     "compile": "tsc",
