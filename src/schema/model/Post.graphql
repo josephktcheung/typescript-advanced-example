@@ -2,6 +2,6 @@ type Post {
     id: Int
     title: String
     text: String
-    categories: [Category]
+    category: Category
     categoryNames: [String]
 }

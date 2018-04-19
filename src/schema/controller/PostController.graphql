@@ -4,6 +4,6 @@ type Query {
 }
 
 type Mutation {
-    postSave(id: Int, title: String, text: String, categoryIds: [Int]): Post
+    postSave(id: Int, title: String, text: String, categoryId: Int): Post
     postDelete(id: Int): Boolean
 }

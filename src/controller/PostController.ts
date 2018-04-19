@@ -1,17 +1,17 @@
-import {ArgsValidator, Controller, Mutation, Query} from "vesper";
-import {EntityManager, FindManyOptions} from "typeorm";
-import {TextGenerator} from "../service/TextGenerator";
-import {Post} from "../entity/Post";
-import {PostsArgs} from "../args/PostsArgs";
-import {PostSaveArgs} from "../args/PostSaveArgs";
-import {Category} from "../entity/Category";
-import {PostsArgsValidator} from "../validator/PostsArgsValidator";
+import { ArgsValidator, Controller, Mutation, Query } from "vesper";
+import { EntityManager, FindManyOptions } from "typeorm";
+import { TextGenerator } from "../service/TextGenerator";
+import { Post } from "../entity/Post";
+import { PostsArgs } from "../args/PostsArgs";
+import { PostSaveArgs } from "../args/PostSaveArgs";
+import { Category } from "../entity/Category";
+import { PostsArgsValidator } from "../validator/PostsArgsValidator";
 
 @Controller()
 export class PostController {
 
     constructor(private entityManager: EntityManager,
-                private textGenerator: TextGenerator) {
+        private textGenerator: TextGenerator) {
     }
 
     @Query()
@@ -42,10 +42,8 @@ export class PostController {
         const post = args.id ? await this.entityManager.findOneOrFail(Post, args.id) : new Post();
         post.title = args.title;
         post.text = args.text ? args.text : this.textGenerator.generate();
-        if (args.categoryIds) {
-            post.categories = await Promise.all(args.categoryIds.map(categoryId => {
-                return this.entityManager.findOne(Category, categoryId);
-            }));
+        if (args.categoryId) {
+            post.category = await this.entityManager.findOne(Category, args.categoryId);
         }
 
         return this.entityManager.save(Post, post);
