@@ -1,11 +1,9 @@
-import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
-import {Category} from "./Category";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Category } from "./Category";
+import { Author } from "./Author";
 
 @Entity()
 export class Post {
-
-    @PrimaryGeneratedColumn()
-    id: number;
 
     @Column()
     title: string;
@@ -13,10 +11,11 @@ export class Post {
     @Column()
     text: string;
 
-    @ManyToMany(() => Category, category => category.posts)
-    @JoinTable()
-    categories: Category[];
+    @ManyToOne(() => Category, category => category.posts, { primary: true })
+    category: Category;
+
+    @ManyToOne(() => Author, author => author.posts, { primary: true })
+    author: Author;
 
     categoryNames: string[];
-
 }

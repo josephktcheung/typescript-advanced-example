@@ -1,0 +1,8 @@
+type Query {
+    authors: [Author]
+    author(id: Int): Author 
+}
+
+type Mutation {
+    authorSave(id: Int, name: String): Author 
+}

@@ -1,21 +1,25 @@
-import {bootstrap} from "vesper";
-import {PostController} from "./controller/PostController";
-import {Post} from "./entity/Post";
-import {CategoryController} from "./controller/CategoryController";
-import {Category} from "./entity/Category";
-import {PostResolver} from "./resolver/PostResolver";
+import { bootstrap } from "vesper";
+import { PostController } from "./controller/PostController";
+import { Post } from "./entity/Post";
+import { CategoryController } from "./controller/CategoryController";
+import { Category } from "./entity/Category";
+import { Author } from "./entity/Author";
+import { AuthorController } from "./controller/AuthorController";
+// import {PostResolver} from "./resolver/PostResolver";
 
 bootstrap({
     port: 3000,
     controllers: [
         PostController,
-        CategoryController
+        CategoryController,
+        AuthorController
     ],
     resolvers: [
-        PostResolver
+        // PostResolver
     ],
     entities: [
         Post,
+        Author,
         Category
     ],
     schemas: [__dirname + "/schema/**/*.graphql"]
