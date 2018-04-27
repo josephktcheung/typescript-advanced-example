@@ -1,7 +1,8 @@
-import {Controller, Mutation, Query} from "vesper";
-import {EntityManager} from "typeorm";
-import {Category} from "../entity/Category";
-import {CategorySaveArgs} from "../args/CategorySaveArgs";
+import { Controller, Mutation, Query } from "vesper";
+import { EntityManager } from "typeorm";
+import { Category } from "../entity/Category";
+import { CategorySaveArgs } from "../args/CategorySaveArgs";
+import { AddCategoryChildArgs } from '../args/AddCategoryChildArgs';
 
 @Controller()
 export class CategoryController {
@@ -26,4 +27,12 @@ export class CategoryController {
         return this.entityManager.save(category);
     }
 
+    @Mutation()
+    async addCategoryChild(args: AddCategoryChildArgs): Promise<Category> {
+        const parent = await this.entityManager.findOneOrFail(Category, args.parentId);
+        const child = await this.entityManager.findOneOrFail(Category, args.childId);
+        child.parent = parent;
+
+        return this.entityManager.save(child);
+    }
 }

@@ -5,4 +5,5 @@ type Query {
 
 type Mutation {
     categorySave(id: Int, name: String): Category
+    addCategoryChild(parentId: Int, childId: Int): Category
 }
