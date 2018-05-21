@@ -20,6 +20,9 @@
     "vesper-typescript-example"
   ],
   "dependencies": {
+    "apollo-fetch": "^0.7.0",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^2.1.2",
     "sqlite3": "^4.0.0",
     "vesper": "0.1.9"
   },
@@ -28,6 +31,7 @@
     "start": "npm run compile && node ./src/index.js"
   },
   "devDependencies": {
+    "@types/node-fetch": "^1.6.9",
     "typescript": "^2.7.2"
   }
 }

@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["es6", "es7", "esnext"],
+    "lib": [
+      "es6",
+      "es7",
+      "esnext",
+      "dom"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
