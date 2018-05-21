@@ -1,6 +1,6 @@
 {
-  "type": "sqlite",
-  "database": "database.sqlite",
+  "type": "postgres",
+  "database": "test",
   "synchronize": true,
   "logging": false
 }

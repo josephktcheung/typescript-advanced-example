@@ -23,6 +23,7 @@
     "apollo-fetch": "^0.7.0",
     "isomorphic-fetch": "^2.2.1",
     "node-fetch": "^2.1.2",
+    "pg": "^7.4.3",
     "sqlite3": "^4.0.0",
     "vesper": "0.1.9"
   },
