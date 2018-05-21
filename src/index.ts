@@ -16,9 +16,14 @@ const generateRequest = name => ({
 const run = async () => {
     const single = await apolloFetch(generateRequest('single'));
     console.log('single request result: ', JSON.stringify(single, null, 2));
-    const multiple = await apolloFetch([generateRequest('multiple 1'), generateRequest('multiple 2')]);
-    console.log('multiple requests result: ', JSON.stringify(multiple, null, 2));
+    const batch = await apolloFetch([generateRequest('batch 1'), generateRequest('batch 2')]);
+    console.log('batch requests result: ', JSON.stringify(batch, null, 2));
+    const asynchronous = await Promise.all([
+        apolloFetch(generateRequest('asynchronous 1')), apolloFetch(generateRequest('asynchronous 2'))
+    ]);
+    console.log('asynchronous requests result: ', JSON.stringify(asynchronous, null, 2));
 }
+
 
 const checkPersistence = async () => {
     const categoryRepository = getConnection().manager.getRepository(Category);
